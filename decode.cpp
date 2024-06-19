@@ -65,5 +65,4 @@ int main(){
     cout<<res[i]<<" ";
   }
   cout<<endl;
-
 }
