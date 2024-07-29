@@ -1,3 +1,4 @@
+
 #include <algorithm>
 #include <bits/stdc++.h>
 #include <climits>
@@ -12,26 +13,23 @@ class Solution {
 public:
   bool increasingTriplet(vector<int> &nums) {
     int l=nums.size();
-    vector<int>leftmin(l,0);
-    vector<int>rightmax(l,0);
-    leftmin[0]=0;
-    rightmax[l-1]=0;
     int min=INT_MAX;
     int max=INT_MIN;
     for(int i=0;i<l;i++){
       if(nums[i]<min){
         min=nums[i];
       }
-      leftmin[i]=min;
       if(nums[l-i-1]>max){
         max=nums[l-i-1];
       }
-      rightmax[l-i-1]=max;
-    }
-    for(int j=1;j<l-2;j++){
-      if(leftmin[j]<rightmax[j] && (nums[j]!=leftmin[j] && nums[j]!=rightmax[j])){
+      if(i==0 || i==l-1){
+        continue;
+      }
+      // cout<<min<<" "<<max<<endl;
+      if(min<max && nums[i]!=min && nums[i]!=max){
         return true;
       }
+    
     }
     return false;
   }
