@@ -9,24 +9,31 @@
 using namespace std;
 class Trie {
 public:
-    Trie() {
-       map<string,bool>table;
+  map<string, bool> sarch;
+  map<string, bool> start;
+
+  Trie() {
+  }
+
+  void insert(string word) {
+    sarch[word]=true;
+    int n = word.size();
+    for (int i = 0; i < n; i++) {
+      start[word.substr(0, i + 1)]=true;
     }
-    
-    void insert(string word) {
-      int n=word.size();
-       for(int i=0;i<n;i++){
-         self.table[word.substr(0,i+1)]
-       } 
-    }
-    
-    bool search(string word) {
-        
-    }
-    
-    bool startsWith(string prefix) {
-        
-    }
+    // for(auto i:table){
+    //   cout<<i.first<<": "<<i.second<<endl;
+    // }
+  }
+
+  bool search(string word) {
+    return sarch[word];
+  }
+
+  bool startsWith(string prefix) {
+    return start[prefix];
+
+  }
 };
 
 /**
