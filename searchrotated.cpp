@@ -13,8 +13,18 @@ public:
     int start=k;
     int end=k+nums.size();
     while(start<=end){
-      int mid=(start+end)/2;
+      int mid=((start+end)/2)%k;
 
+      if(nums[mid]==target){
+        return mid;
+      }
+      else if(nums[mid]>target){
+        end=mid-1;
+      }
+      else{
+        start=mid+1;
+      }
     }
+    return -1;
   }
 };
